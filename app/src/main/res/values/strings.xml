@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Swiggy</string>
+    <string name="now">NOW</string>
+    <string name="home">Home</string>
+    <string name="offers">Offers</string>
+    <string name="staying_up_late_let_us_serve_you">Staying up late? Let us serve you.</string>
+</resources>
