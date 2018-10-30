@@ -89,7 +89,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/offter_recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
@@ -114,6 +114,7 @@
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
         android:paddingTop="3dp"
+        android:paddingBottom="3dp"
         android:textSize="10sp"
         android:textColor="@color/colorView"
         android:letterSpacing="0.2"
@@ -128,6 +129,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Short/filer"
+        android:paddingBottom="3dp"
         android:paddingRight="10dp"
         android:paddingTop="3dp"
         android:textColor="@color/colorView"
@@ -149,14 +151,27 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/items_recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottomNavigationView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:menu="@menu/bottom_nevigation_menu"
+        app:itemTextColor="@color/colorPrimaryDark"
+        android:elevation="1dp"
+        app:itemIconSize="18dp"
+        android:textAlignment="center"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
 </android.support.constraint.ConstraintLayout>
