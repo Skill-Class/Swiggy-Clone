@@ -1,84 +1,84 @@
 package com.example.sheetalkumar.swiggy.Activities;
 
+import android.content.Intent;
+import android.support.annotation.NonNull;
+
+import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
+import android.widget.Toast;
 
-import com.example.sheetalkumar.swiggy.Adapters.ItemAdapter;
-import com.example.sheetalkumar.swiggy.Adapters.OfferAdapter;
+
+import com.example.sheetalkumar.swiggy.Fragments.AccountFragment;
+import com.example.sheetalkumar.swiggy.Fragments.CartFragment;
+import com.example.sheetalkumar.swiggy.Fragments.ExploreFragment;
+import com.example.sheetalkumar.swiggy.Fragments.NearMeFragment;
+import com.example.sheetalkumar.swiggy.Fragments.PopFragment;
 import com.example.sheetalkumar.swiggy.R;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ArrayList<Integer> OfferImages = new ArrayList<>();
-    private ArrayList<Integer> itemImages = new ArrayList<>();
-    private ArrayList<String> itemName = new ArrayList<>();
+    private BottomNavigationView bottomNavigationView;
 
-    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
- 
-        getImages();
+
+        bottomNavigationView = findViewById(R.id.navigation);
+        loadFragment(new NearMeFragment());
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                Fragment fragment;
+                switch (menuItem.getItemId()) {
+                    case R.id.near_me:
+                        fragment = new NearMeFragment();
+                        loadFragment(fragment);
+    //                    Toast.makeText(MainActivity.this, "Near Me", Toast.LENGTH_LONG).show();
+                        return true;
+                    case R.id.explore:
+      //                  Toast.makeText(MainActivity.this, "Explore", Toast.LENGTH_LONG).show();
+                        fragment = new ExploreFragment();
+                        loadFragment(fragment);
+                        return true;
+                    case R.id.pop:
+        //                Toast.makeText(MainActivity.this, "POP", Toast.LENGTH_LONG).show();
+                        fragment = new PopFragment();
+                        loadFragment(fragment);
+                        return true;
+                    case R.id.cart:
+          //              Toast.makeText(MainActivity.this, "Cart", Toast.LENGTH_LONG).show();
+                        fragment = new CartFragment();
+                        loadFragment(fragment);
+                        return true;
+                    case R.id.account:
+                        fragment = new AccountFragment();
+                        loadFragment(fragment);
+            //            Toast.makeText(MainActivity.this, "Account", Toast.LENGTH_LONG).show();
+                        return true;
+                }
+                return false;
+            }
+        });
+
+
+        // calling getImages function to take all static data.
+        //getImages();
     }
 
-    private void getImages() {
-        OfferImages.add(R.drawable.offerimageone);
-        OfferImages.add(R.drawable.offerimagetwo);
-        OfferImages.add(R.drawable.offerimageone);
-        OfferImages.add(R.drawable.offerimagetwo);
-        OfferImages.add(R.drawable.offerimageone);
-        OfferImages.add(R.drawable.offerimagetwo);
+    private void loadFragment(Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
 
-        itemImages.add(R.drawable.itemone);
-        itemImages.add(R.drawable.itemtwo);
-        itemImages.add(R.drawable.itemthree);
-        itemImages.add(R.drawable.itemfour);
-        itemImages.add(R.drawable.itemone);
-        itemImages.add(R.drawable.itemtwo);
-        itemImages.add(R.drawable.itemthree);
-        itemImages.add(R.drawable.itemfour);
-        itemImages.add(R.drawable.itemone);
-        itemImages.add(R.drawable.itemtwo);
-        itemImages.add(R.drawable.itemthree);
-        itemImages.add(R.drawable.itemfour);
-
-        itemName.add("Panjabi Rasoi");
-        itemName.add("Hello meal");
-        itemName.add("Brijwaasi");
-        itemName.add("34 Chawringhee Lane");
-        itemName.add("Panjabi Rasoi");
-        itemName.add("Hello meal");
-        itemName.add("Brijwaasi");
-        itemName.add("34 Chawringhee Lane");
-        itemName.add("Panjabi Rasoi");
-        itemName.add("Hello meal");
-        itemName.add("Brijwaasi");
-        itemName.add("34 Chawringhee Lane");
-
-
-
-            
-        
-        initRecycleterView();
-    }
-
-    private void initRecycleterView() {
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        RecyclerView offterRecyclerView = findViewById(R.id.offter_recyclerView);
-        offterRecyclerView.setLayoutManager(layoutManager);
-        OfferAdapter adapter = new OfferAdapter(this, OfferImages);
-        offterRecyclerView.setAdapter(adapter);
-
-        LinearLayoutManager layoutManagerForItems = new LinearLayoutManager(this, LinearLayoutManager. VERTICAL, false);
-        RecyclerView itemRecyclerView = findViewById(R.id.items_recyclerView);
-        itemRecyclerView.setLayoutManager(layoutManagerForItems);
-        ItemAdapter adapterforItem = new ItemAdapter(this, itemImages,itemName);
-        itemRecyclerView.setAdapter(adapterforItem);
     }
 }
