@@ -30,4 +30,11 @@ dependencies {
     implementation 'com.android.support:design:28.0.0'
     //  implementation 'com.google.android.material"material:1.0.0-beta01'
 
+    //Dependencies for chat AI
+    compile 'ai.api:libai:1.6.12'
+    compile 'ai.api:sdk:2.0.7@aar'
+
+// api.ai SDK dependencies
+
+
 }
