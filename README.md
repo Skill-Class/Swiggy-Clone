@@ -1,2 +1,4 @@
-# Swiggy_Clone
-This is a personal Project. Only for Learning purpose.
+# Swiggy Clone
+`This project is only for learning purpose.`
+
+![](https://github.com/ksheetal/Swiggy_Clone/blob/master/swiggyDemo.png)
