@@ -1,6 +1,5 @@
 # Swiggy Clone
 
-this project is no longer maintained.
-`This project is only for learning purpose.`
+'This project is no longer maintained'
 
 ![](https://github.com/ksheetal/Swiggy_Clone/blob/master/swiggyDemo.png)
